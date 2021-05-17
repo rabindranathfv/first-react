@@ -73,6 +73,13 @@ DefaultPropsExample.defaultProps = {
   info: 'Using default Props'
 }
 
+class ShowCounter extends Component {
+  render() {
+    return (
+      <p><spam> {this.props.counter }</spam></p>
+    )
+  }
+}
 class Counter extends Component {
   constructor() {
     super()
@@ -89,12 +96,20 @@ class Counter extends Component {
 
   render() {
     const reset = () => {
-      this.setState({ counter: 0 })
+      this.setState({ counter: 0 });
+    }
+    const increment = () => {
+      this.setState({ counter: this.state.counter + 1  });
+    }
+    const decrement = () => {
+      this.setState({ counter: this.state.counter - 1 });
     }
     return (
       <div>
-        <p>Contador { this.state.counter }</p>
+        <ShowCounter counter={this.state.counter} />
         <button type="button" onClick={reset}>Reset Me!</button>
+        <button type="button" onClick={increment}>Increment!</button>
+        <button type="button" onClick={decrement}>Decrement!</button>
       </div> 
     )
   }
