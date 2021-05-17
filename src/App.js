@@ -61,7 +61,9 @@ const multiply = (n) => n*2;
 class DefaultPropsExample extends Component {
   render() {
     return (
-        <p>Empty Props --> {this.props.info}</p>
+      <div>
+        <p>Empty Props: {this.props.info}</p>
+      </div>
     )
   }
 }
@@ -69,6 +71,33 @@ class DefaultPropsExample extends Component {
 // using default Props
 DefaultPropsExample.defaultProps = {
   info: 'Using default Props'
+}
+
+class Counter extends Component {
+  constructor() {
+    super()
+    this.state = {
+      counter: 1
+    };
+    setInterval( () => {
+      this.setState({
+        counter: this.state.counter + 1
+      })
+    }, 2000)
+
+  }
+
+  render() {
+    const reset = () => {
+      this.setState({ counter: 0 })
+    }
+    return (
+      <div>
+        <p>Contador { this.state.counter }</p>
+        <button type="button" onClick={reset}>Reset Me!</button>
+      </div> 
+    )
+  }
 }
 class App extends Component {
   render() {
@@ -78,8 +107,8 @@ class App extends Component {
             <ImgLogo />
             <Title name='Rabin' />
             <Link msg={message} />
-            <div>
-             <DataTypes text='props as String' 
+          </header>
+          <DataTypes text='props as String' 
               numberInfo={14} 
               flag={false}
               info={[1,22,44,"hola", true, -1, false]}
@@ -87,12 +116,9 @@ class App extends Component {
               multiply={multiply(20)}
               componentAsProp={<ClickMe />}
              />
-            </div>
 
-            <div>
-              <DefaultPropsExample />
-            </div>
-          </header>
+        <DefaultPropsExample />
+        <Counter />
         </div>
       );
   };
