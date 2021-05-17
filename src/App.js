@@ -2,10 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
-const ImgLogo = () => <img src={logo} className="App-logo" alt="logo" />;;
+const ImgLogo = () => <img src={logo} className="App-logo" alt="logo" />;
 
 function Title(props) {
-  return <p>HOLA {props.name} in React, Edit <code>src/App.js</code> and save to reload.</p>;
+  return <p>Hello {props.name} in React, Edit <code>src/App.js</code> and save to reload.</p>;
 }
 
 const message = 'Learn ReactJs power by Facebook';
@@ -24,6 +24,27 @@ class Link extends Component {
   };
 }
 
+const user = { name: "Rabindranath", lastname: "Ferreira"};
+const UseFlag = (props) => <span>{props.flag ? 'Flag activated' : 'flag deactivated' } </span>
+
+const PersonLastname = (props) => props.lastname;
+class DataTypes extends Component {
+  render() {
+    return (
+      <div>
+        <ul> 
+            <li>string:{ this.props.text }</li> 
+            <li>number: {this.props.numberInfo}</li> 
+            <li>Boolean with component and ternary operator: <UseFlag flag={this.props.flag}/></li> 
+            <li>Array: { this.props.info }</li> 
+            <li>Name of User: { this.props.personInfo.name }, Remenber React doesn't support full object as props</li> 
+            <li> acceso into a property in a Object <PersonLastname lastname={this.props.personInfo.lastname} /></li>
+        </ul>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   render() {
       return (
@@ -32,6 +53,13 @@ class App extends Component {
             <ImgLogo />
             <Title name='Rabin' />
             <Link msg={message} />
+            <div>
+             <DataTypes text='props as String' 
+              numberInfo={14} 
+              flag={false}
+              info={[1,22,44,"hola", true, -1, false]}
+              personInfo={user} />
+            </div>
           </header>
         </div>
       );
