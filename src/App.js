@@ -26,8 +26,8 @@ class Link extends Component {
 
 const user = { name: "Rabindranath", lastname: "Ferreira"};
 const UseFlag = (props) => <span>{props.flag ? 'Flag activated' : 'flag deactivated' } </span>
-
 const PersonLastname = (props) => props.lastname;
+
 class DataTypes extends Component {
   render() {
     return (
@@ -39,12 +39,23 @@ class DataTypes extends Component {
             <li>Array: { this.props.info }</li> 
             <li>Name of User: { this.props.personInfo.name }, Remenber React doesn't support full object as props</li> 
             <li> acceso into a property in a Object <PersonLastname lastname={this.props.personInfo.lastname} /></li>
+            <li>function as props: { this.props.multiply} </li>
         </ul>
+
+        <div>
+          Component as Props {this.props.componentAsProp}
+        </div>
       </div>
     )
   }
 }
 
+const ClickMe = () => {
+  return (
+      <button type="button">Click Me!</button>
+  )
+}
+const multiply = (n) => n*2; 
 class App extends Component {
   render() {
       return (
@@ -58,7 +69,10 @@ class App extends Component {
               numberInfo={14} 
               flag={false}
               info={[1,22,44,"hola", true, -1, false]}
-              personInfo={user} />
+              personInfo={user}
+              multiply={multiply(20)}
+              componentAsProp={<ClickMe />}
+             />
             </div>
           </header>
         </div>
