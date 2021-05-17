@@ -55,7 +55,21 @@ const ClickMe = () => {
       <button type="button">Click Me!</button>
   )
 }
+
 const multiply = (n) => n*2; 
+
+class DefaultPropsExample extends Component {
+  render() {
+    return (
+        <p>Empty Props --> {this.props.info}</p>
+    )
+  }
+}
+
+// using default Props
+DefaultPropsExample.defaultProps = {
+  info: 'Using default Props'
+}
 class App extends Component {
   render() {
       return (
@@ -73,6 +87,10 @@ class App extends Component {
               multiply={multiply(20)}
               componentAsProp={<ClickMe />}
              />
+            </div>
+
+            <div>
+              <DefaultPropsExample />
             </div>
           </header>
         </div>
