@@ -19,25 +19,25 @@ export default class Counter extends Component {
           counter: this.state.counter + 1
         })
       }, 2000)
-  
+      this.reset = this.reset.bind(this);
     }
-  
+
+    reset() {
+      this.setState({ counter: 0 });
+    }
+    increment = () => {
+      this.setState({ counter: this.state.counter + 1  });
+    }
+    decrement = () => {
+      this.setState({ counter: this.state.counter - 1 });
+    }
     render() {
-      const reset = () => {
-        this.setState({ counter: 0 });
-      }
-      const increment = () => {
-        this.setState({ counter: this.state.counter + 1  });
-      }
-      const decrement = () => {
-        this.setState({ counter: this.state.counter - 1 });
-      }
       return (
         <div>
           <ShowCounter counter={this.state.counter} />
-          <button type="button" onClick={reset}>Reset Me!</button>
-          <button type="button" onClick={increment}>Increment!</button>
-          <button type="button" onClick={decrement}>Decrement!</button>
+          <button type="button" onClick={this.reset}>Reset Me!</button>
+          <button type="button" onClick={this.increment}>Increment!</button>
+          <button type="button" onClick={this.decrement}>Decrement!</button>
         </div> 
       )
     }
