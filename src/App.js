@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import Counter from './counter/counter'
+import dataCars from './Cars/cars.json';
 import ListCars from './Cars/cars'
 import ListBox from './box/box'
 
@@ -97,7 +98,7 @@ class App extends Component {
         <DefaultPropsExample />
         <Counter />
         <ListBox />
-        <ListCars />
+        <ListCars cars={dataCars} />
         </div>
       );
   };

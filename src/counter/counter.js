@@ -3,11 +3,10 @@ import { Component } from 'react';
 class ShowCounter extends Component {
     render() {
       return (
-        <p><spam> {this.props.counter }</spam></p>
+        <p><spam> {this.props.counter}</spam></p>
       )
     }
   }
-  
 export default class Counter extends Component {
     constructor() {
       super()
