@@ -3,6 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import Counter from './counter/counter'
 import ListCars from './Cars/cars'
+import ListBox from './box/box'
 
 const ImgLogo = () => <img src={logo} className="App-logo" alt="logo" />;
 
@@ -95,6 +96,7 @@ class App extends Component {
 
         <DefaultPropsExample />
         <Counter />
+        <ListBox />
         <ListCars />
         </div>
       );
